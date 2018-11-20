@@ -6,6 +6,7 @@
 
 import java.awt.Dimension;
 import java.awt.Graphics;
+import java.awt.Point;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
@@ -14,11 +15,15 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
 public class MagicBox extends JPanel implements Runnable, MouseListener {
-
+JFrame frame=new JFrame();
+JPanel panel=new JPanel();
+JLabel label= new JLabel();
+MediaPalace mp=new MediaPalace();
 	/*
 	 * We are going to hide secrets within the magic box. 
 	 * When the user clicks on a secret place, stuff will happen.
@@ -34,8 +39,6 @@ public class MagicBox extends JPanel implements Runnable, MouseListener {
 
 	public static void main(String[] args) throws Exception {
 		SwingUtilities.invokeLater(new MagicBox());
-	
-		
 		
 	}
 
@@ -56,6 +59,8 @@ public class MagicBox extends JPanel implements Runnable, MouseListener {
 		frame.pack();
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setVisible(true);
+		frame.addMouseListener(this);
+		frame.add(panel);
 	}
 
 	private void loadBackgroundImage() throws Exception {
@@ -70,14 +75,23 @@ public class MagicBox extends JPanel implements Runnable, MouseListener {
 	@Override
 	public void paintComponent(Graphics g) {
 		g.drawImage(backgroundImage, 0, 0, null);
+		
 	}
 
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		// TODO Auto-generated method stub
 		
-	}
 
+	Point point;
+	point=	e.getLocationOnScreen();
+	System.out.println(point);
+	if(point.x>168&&point.x<191&&point.y>866&&point.y<882){
+	 	mp.playMusicOnComputer("/Users/league/Desktop/mario.mp3");
+	
+	System.out.println("CLICK!");
+	}
+	}
 	@Override
 	public void mousePressed(MouseEvent e) {
 		// TODO Auto-generated method stub
