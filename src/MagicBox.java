@@ -27,7 +27,7 @@ MediaPalace mp=new MediaPalace();
 	/*
 	 * We are going to hide secrets within the magic box. 
 	 * When the user clicks on a secret place, stuff will happen.
-	 * 
+	 *
 	 * 1. Make the frame respond to mouse clicks.
 	 * 
 	 * 2. When the mouse is clicked, use the Media Palace (read the code in the default package) to play sounds, show images or speak.
@@ -87,10 +87,38 @@ MediaPalace mp=new MediaPalace();
 	point=	e.getLocationOnScreen();
 	System.out.println(point);
 	if(point.x>168&&point.x<191&&point.y>866&&point.y<882){
-	 	mp.playMusicOnComputer("/Users/league/Desktop/mario.mp3");
+	 mp.playMusicOnComputer("/Users/League/Desktop/level1-module4-jtluo05/src/mario.mp3"); 
 	
-	System.out.println("CLICK!");
+	System.out.println(" sound(mario) CLICK!");
+	
 	}
+	
+	if(point.x>238 && point.x<553 && point.y>262 && point.y<576){
+		JFrame frame=new JFrame();
+		JLabel label=new JLabel();
+		label=mp.loadImageFromWithinProject("Mancity.jpg");
+		frame.add(label);
+		frame.setVisible(true);
+		frame.pack();
+		
+		
+		System.out.println(" picture CLICK!");
+		
+		}
+	
+	if(point.x<339&&point.x>184&&point.y<339&&point.y>174){
+mp.speak("Why hello there! Ya got me!");
+		
+		System.out.println(" speak CLICK!");
+		
+		}
+	
+	if(point.x>87&&point.x<796&&point.y>109&&point.y<814){
+		 mp.playMusicOnComputer("/Users/League/Desktop/level1-module4-jtluo05/src/snort.mp3"); 
+		
+		System.out.println(" sound(snort) CLICK!");
+		
+		}
 	}
 	@Override
 	public void mousePressed(MouseEvent e) {
